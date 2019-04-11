@@ -68,8 +68,9 @@ export function useReducer<S, A extends Action<any> = Action<any>>(
     initialState: S,
     id: string | number
 ): [S, Dispatch<A>] {
+    const context = useContext(StateInspectorContext)
     const [store, reducerId] = useMemo<[EnhancedStore, string | number]>(
-        () => [useContext(StateInspectorContext), id],
+        () => [context, id],
         []
     )
 
